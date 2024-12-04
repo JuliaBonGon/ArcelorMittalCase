@@ -14,7 +14,7 @@ const GeneralNews = () => {
         const keywords =
         language === 'en'
           ? 'steel AND (industry OR manufacturing OR production)'
-          : 'staal EN (industrie OF fabricage OF productie)';
+          : 'staal AND (industrie OR productie)';
 
         const response = await axios.get("https://newsapi.org/v2/everything", {
           params: {
