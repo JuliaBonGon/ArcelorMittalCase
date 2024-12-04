@@ -31,25 +31,34 @@ const ArcelorMittalNews = () => {
   }, []);
 
   return (
-    <div>
+    <div div style={{ padding: '20px' }}>
       <h2>ArcelorMittal News</h2>
       <ul style={{ listStyleType: 'none', padding: 0 }}>
         {newsArticles.map((article, index) => (
           <li key={index} style={{ marginBottom: '20px' }}>
-            {article.urlToImage && (
-              <img 
-                src={article.urlToImage} 
-                alt={article.title} 
-                style={{ maxWidth: '200px', height: 'auto', borderRadius: '8px' }} 
-              />
-            )}
-            <h2>
+           <h2>
               <a href={article.url} target="_blank" rel="noopener noreferrer">
                 {article.title}
               </a>
             </h2>
-            <p>{article.description}</p>
-            <p>{article.source.name}, {new Date(article.publishedAt).toLocaleString()}</p>
+            <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+              <div style={{ flex: 1 }}>
+                <p>{article.description}</p>
+                <p>{article.source.name}, {new Date(article.publishedAt).toLocaleString()}</p>
+              </div>
+              {article.urlToImage && (
+                <img 
+                  src={article.urlToImage} 
+                  alt={article.title} 
+                  style={{ 
+                    width: '200px',  
+                    height: 'auto', 
+                    marginLeft: '20px', 
+                    borderRadius: '8px' 
+                  }} 
+                />
+              )}
+            </div>
           </li>
         ))}
       </ul>

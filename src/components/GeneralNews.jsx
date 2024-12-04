@@ -1,4 +1,4 @@
-//src/Components/NewsComponents.jsx
+//src/components/GeneralNews.jsx
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -6,7 +6,7 @@ import axios from 'axios';
 const GeneralNews = () => {
   const [newsArticles, setNewsArticles] = useState([]);
 
-  // Fetch news when the component mounts
+
   useEffect(() => {
     const fetchNews = async () => {
       try {
@@ -28,30 +28,40 @@ const GeneralNews = () => {
   }, []); // 
 
   return (
-    <div>
-      <h1>Industry general news</h1>
+    <div div style={{ padding: '20px' }}>
+      <h1>Industry General News</h1>
       <ul style={{ listStyleType: 'none', padding: 0 }}>
         {newsArticles.map((article, index) => (
-          <li key={index}>
-            {article.urlToImage && (
-              <img 
-                src={article.urlToImage} 
-                alt={article.title} 
-                style={{ maxWidth: '200px', height: 'auto', borderRadius: '8px' }} 
-              />
-            )}
+          <li key={index} style={{ marginBottom: '20px' }}>
             <h2>
               <a href={article.url} target="_blank" rel="noopener noreferrer">
                 {article.title}
               </a>
             </h2>
-            <p>{article.description}</p>
-            <p>{article.source.name}, {new Date(article.publishedAt).toLocaleString()}</p>
+            <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+              <div style={{ flex: 1 }}>
+                <p>{article.description}</p>
+                <p>{article.source.name}, {new Date(article.publishedAt).toLocaleString()}</p>
+              </div>
+              {article.urlToImage && (
+                <img 
+                  src={article.urlToImage} 
+                  alt={article.title} 
+                  style={{ 
+                    width: '200px',  
+                    height: 'auto', 
+                    marginLeft: '20px', 
+                    borderRadius: '8px' 
+                  }} 
+                />
+              )}
+            </div>
           </li>
         ))}
       </ul>
     </div>
   );
 };
+
 
 export default GeneralNews;
