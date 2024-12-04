@@ -40,7 +40,7 @@ const ArcelorMittalNews = () => {
               <img 
                 src={article.urlToImage} 
                 alt={article.title} 
-                style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} 
+                style={{ maxWidth: '200px', height: 'auto', borderRadius: '8px' }} 
               />
             )}
             <h2>
@@ -49,8 +49,7 @@ const ArcelorMittalNews = () => {
               </a>
             </h2>
             <p>{article.description}</p>
-            <p>{article.source.name}</p>
-            <p>{new Date(article.publishedAt).toLocaleString()}</p>
+            <p>{article.source.name}, {new Date(article.publishedAt).toLocaleString()}</p>
           </li>
         ))}
       </ul>
