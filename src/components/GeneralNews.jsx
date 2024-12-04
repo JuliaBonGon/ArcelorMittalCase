@@ -10,12 +10,12 @@ const GeneralNews = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get("https://newsapi.org/v2/everything?q=steel%20industry&apiKey=782a0910ac184d9fabd9b80e27529016&language=en&sortBy=publishedAt", {
+        const response = await axios.get("https://newsapi.org/v2/everything", {
           params: {
             apiKey: '782a0910ac184d9fabd9b80e27529016', 
-            q: 'steel industry', 
+            q: 'steel AND (industry OR manufacturing OR production)', 
             language: 'en', 
-            sortBy: 'publishedAt',
+            sortBy: 'relevancy',
           },
         });
         setNewsArticles(response.data.articles); 
