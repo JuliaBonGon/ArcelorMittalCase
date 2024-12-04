@@ -33,10 +33,20 @@ const NewsComponent = () => {
       <ul>
         {newsArticles.map((article, index) => (
           <li key={index}>
-            <a href={article.url} target="_blank" rel="noopener noreferrer">
-              {article.title}
-            </a>
+            {article.urlToImage && (
+              <img 
+                src={article.urlToImage} 
+                alt={article.title} 
+                style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} 
+              />
+            )}
+            <h2>
+              <a href={article.url} target="_blank" rel="noopener noreferrer">
+                {article.title}
+              </a>
+            </h2>
             <p>{article.description}</p>
+            <p>{article.source.name}</p>
           </li>
         ))}
       </ul>
