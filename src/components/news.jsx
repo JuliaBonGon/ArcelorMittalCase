@@ -29,7 +29,7 @@ const NewsComponent = () => {
 
   return (
     <div>
-      <h1>Top News</h1>
+      <h1>Industry general news</h1>
       <ul>
         {newsArticles.map((article, index) => (
           <li key={index}>
