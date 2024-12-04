@@ -1,9 +1,21 @@
-import NewsComponent from "./News";
+import React from 'react';
+import GeneralNews from './GeneralNews';
+import ArcelorMittalNews from './ArcelorMittalNews';
 
-export default function Tab() {
+const NewsDashboard = () => {
   return (
-    <>
-      <NewsComponent />
-    </>
+    <div style={{ display: 'flex', gap: '20px' }}>
+      {/* General News Column */}
+      <div style={{ flex: 1 }}>
+        <GeneralNews />
+      </div>
+
+      {/* ArcelorMittal News Column */}
+      <div style={{ flex: 1 }}>
+        <ArcelorMittalNews />
+      </div>
+    </div>
   );
-}
+};
+
+export default NewsDashboard;

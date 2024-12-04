@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const NewsComponent = () => {
+const GeneralNews = () => {
   const [newsArticles, setNewsArticles] = useState([]);
 
   // Fetch news when the component mounts
@@ -30,7 +30,7 @@ const NewsComponent = () => {
   return (
     <div>
       <h1>Industry general news</h1>
-      <ul>
+      <ul style={{ listStyleType: 'none', padding: 0 }}>
         {newsArticles.map((article, index) => (
           <li key={index}>
             {article.urlToImage && (
@@ -47,6 +47,7 @@ const NewsComponent = () => {
             </h2>
             <p>{article.description}</p>
             <p>{article.source.name}</p>
+            <p>{new Date(article.publishedAt).toLocaleString()}</p>
           </li>
         ))}
       </ul>
@@ -54,4 +55,4 @@ const NewsComponent = () => {
   );
 };
 
-export default NewsComponent;
+export default GeneralNews;

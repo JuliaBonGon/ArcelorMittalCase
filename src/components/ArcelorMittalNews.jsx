@@ -10,8 +10,7 @@ const ArcelorMittalNews = () => {
         const response = await axios.get("https://newsapi.org/v2/everything", {
           params: {
             apiKey: '782a0910ac184d9fabd9b80e27529016',
-            q: 'steel industry',
-            language: 'en',
+            q: 'ArcelorMittal',
             sortBy: 'publishedAt',
           },
         });
@@ -44,18 +43,14 @@ const ArcelorMittalNews = () => {
                 style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} 
               />
             )}
-            <h3>
+            <h2>
               <a href={article.url} target="_blank" rel="noopener noreferrer">
                 {article.title}
               </a>
-            </h3>
+            </h2>
             <p>{article.description}</p>
-            <p>
-              <strong>Source:</strong> {article.source.name}
-            </p>
-            <p>
-              <strong>Published:</strong> {new Date(article.publishedAt).toLocaleString()}
-            </p>
+            <p>{article.source.name}</p>
+            <p>{new Date(article.publishedAt).toLocaleString()}</p>
           </li>
         ))}
       </ul>
