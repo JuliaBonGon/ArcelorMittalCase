@@ -1,7 +1,9 @@
+//src/components/ArcelorMittalNews.jsx
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ArcelorMittalNews = () => {
+const ArcelorMittalNews = ({language}) => {
   const [newsArticles, setNewsArticles] = useState([]);
 
   useEffect(() => {
@@ -11,6 +13,7 @@ const ArcelorMittalNews = () => {
           params: {
             apiKey: '782a0910ac184d9fabd9b80e27529016',
             q: 'ArcelorMittal',
+            language: language, 
             sortBy: 'publishedAt',
           },
         });
@@ -28,7 +31,7 @@ const ArcelorMittalNews = () => {
     };
 
     fetchNews();
-  }, []);
+  }, [language]);
 
   return (
     <div div style={{ padding: '20px' }}>

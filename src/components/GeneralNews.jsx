@@ -2,11 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import LanguageSelector from './LanguageSelector';
 
-const GeneralNews = () => {
+const GeneralNews = ({language}) => {
   const [newsArticles, setNewsArticles] = useState([]);
-  const [language, setLanguage] = useState (['en']);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -36,7 +34,7 @@ const GeneralNews = () => {
   return (
     
     <div div style={{ padding: '20px' }}>
-      <LanguageSelector language={language} setLanguage={setLanguage} />
+     
       <h1>Industry General News</h1>
       
       <ul style={{ listStyleType: 'none', padding: 0 }}>
