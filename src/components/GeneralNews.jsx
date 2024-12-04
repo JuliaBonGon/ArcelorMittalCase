@@ -2,19 +2,25 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import LanguageSelector from './LanguageSelector';
 
 const GeneralNews = () => {
   const [newsArticles, setNewsArticles] = useState([]);
-
+  const [language, setLanguage] = useState (['en']);
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
+        const keywords =
+        language === 'en'
+          ? 'steel AND (industry OR manufacturing OR production)'
+          : 'staal EN (industrie OF fabricage OF productie)';
+
         const response = await axios.get("https://newsapi.org/v2/everything", {
           params: {
             apiKey: '782a0910ac184d9fabd9b80e27529016', 
-            q: 'steel AND (industry OR manufacturing OR production)', 
-            language: 'en', 
+            q: keywords, 
+            language: language, 
             sortBy: 'relevancy',
           },
         });
@@ -25,11 +31,14 @@ const GeneralNews = () => {
     };
 
     fetchNews();
-  }, []); // 
+  }, [language]); 
 
   return (
+    
     <div div style={{ padding: '20px' }}>
+      <LanguageSelector language={language} setLanguage={setLanguage} />
       <h1>Industry General News</h1>
+      
       <ul style={{ listStyleType: 'none', padding: 0 }}>
         {newsArticles.map((article, index) => (
           <li key={index} style={{ marginBottom: '20px' }}>
