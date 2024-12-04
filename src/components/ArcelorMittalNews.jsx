@@ -33,9 +33,11 @@ const ArcelorMittalNews = ({language}) => {
     fetchNews();
   }, [language]);
 
+  const title = language === 'en' ? 'ArcelorMittal News' : 'ArcelorMittal Nieuws';
+  
   return (
     <div div style={{ padding: '20px' }}>
-      <h2>ArcelorMittal News</h2>
+      <h1>{title}</h1>
       <ul style={{ listStyleType: 'none', padding: 0 }}>
         {newsArticles.map((article, index) => (
           <li key={index} style={{ marginBottom: '20px' }}>

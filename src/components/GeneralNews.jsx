@@ -31,11 +31,12 @@ const GeneralNews = ({language}) => {
     fetchNews();
   }, [language]); 
 
+  const title = language === 'en' ? 'Steel Industry General News' : 'Staal Industrie Algemeen Nieuws';
+
   return (
-    
     <div div style={{ padding: '20px' }}>
      
-      <h1>Industry General News</h1>
+      <h1>{title}</h1>
       
       <ul style={{ listStyleType: 'none', padding: 0 }}>
         {newsArticles.map((article, index) => (
