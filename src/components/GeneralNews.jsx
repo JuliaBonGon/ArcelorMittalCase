@@ -6,6 +6,7 @@ import { formatDate } from '../utils/dateUtils';
 
 const GeneralNews = ({language}) => {
   const [newsArticles, setNewsArticles] = useState([]);
+  const [sortBy, setSortBy] = useState('publishedAt');
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -20,7 +21,7 @@ const GeneralNews = ({language}) => {
             apiKey: '782a0910ac184d9fabd9b80e27529016', 
             q: keywords, 
             language: language, 
-            sortBy: 'relevancy',
+            sortBy: sortBy,
           },
         });
         setNewsArticles(response.data.articles); 
@@ -30,14 +31,40 @@ const GeneralNews = ({language}) => {
     };
 
     fetchNews();
-  }, [language]); 
+  }, [language, sortBy]); 
 
   const title = language === 'en' ? 'Steel Industry General News' : 'Staal Industrie Algemeen Nieuws';
+
+  const sortOptions = language === 'en'
+    ? [
+        { value: 'relevancy', label: 'Relevancy' },
+        { value: 'popularity', label: 'Popularity' },
+        { value: 'publishedAt', label: 'Newest first' },
+      ]
+    : [
+        { value: 'relevancy', label: 'Relevantie' },
+        { value: 'popularity', label: 'Populariteit' },
+        { value: 'publishedAt', label: 'Nieuwste eerst' },
+      ];
 
   return (
     <div div style={{ padding: '20px' }}>
      
       <h1>{title}</h1>
+      <div style={{ marginBottom: '20px' }}>
+        <label htmlFor="sortBy" style={{ marginRight: '10px' }}></label>
+        <select
+          id="sortBy"
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+        >
+          {sortOptions.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </div>
       
       <ul style={{ listStyleType: 'none', padding: 0 }}>
         {newsArticles.map((article, index) => (
