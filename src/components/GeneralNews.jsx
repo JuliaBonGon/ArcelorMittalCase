@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { formatDate } from '../utils/dateUtils';
 
 const GeneralNews = ({language}) => {
   const [newsArticles, setNewsArticles] = useState([]);
@@ -49,7 +50,7 @@ const GeneralNews = ({language}) => {
             <div style={{ display: 'flex', alignItems: 'flex-start' }}>
               <div style={{ flex: 1 }}>
                 <p>{article.description}</p>
-                <p>{article.source.name}, {new Date(article.publishedAt).toLocaleString()}</p>
+                <p>{article.source.name}, {formatDate(article.publishedAt)}</p>
               </div>
               {article.urlToImage && (
                 <img 
