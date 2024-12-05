@@ -50,7 +50,7 @@ const ArcelorMittalNews = ({language}) => {
             <div style={{ display: 'flex', alignItems: 'flex-start' }}>
               <div style={{ flex: 1 }}>
                 <p>{article.description}</p>
-                <p>{article.source.name}, {formatDate(article.publishedAt)}</p>
+                <p>{article.source.name}, {formatDate(article.publishedAt, language)}</p>
               </div>
               {article.urlToImage && (
                 <img 
