@@ -26,6 +26,14 @@ const NewsDashboard = () => {
             ArcelorMittal News
         </button>
        </div>
+       
+       {selectedNews === 'general' && (
+        <div><GeneralNews language={language} /></div>
+      )}
+
+      {selectedNews === 'arcelormittal' && (
+        <div><ArcelorMittalNews language={language} /></div>
+      )}
       </div>
   );
 };
