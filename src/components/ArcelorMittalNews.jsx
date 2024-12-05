@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { formatDate } from '../utils/dateUtils';
+import deduplicateArticles from '../utils/deduplicateNews';
 
 const ArcelorMittalNews = ({language}) => {
   const [newsArticles, setNewsArticles] = useState([]);
@@ -20,11 +21,11 @@ const ArcelorMittalNews = ({language}) => {
           },
         });
 
-        const filteredArticles = response.data.articles.filter(
+        const filteredArticles = deduplicateArticles(response.data.articles.filter(
           (article) =>
             article.title.toLowerCase().includes("arcelormittal") ||
             article.description?.toLowerCase().includes("arcelormittal")
-        );
+        ));
 
         setNewsArticles(filteredArticles);
       } catch (error) {
