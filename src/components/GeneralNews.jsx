@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { formatDate } from '../utils/dateUtils';
 import deduplicateArticles from '../utils/deduplicateNews';
+import filterRemovedArticles from '../utils/filterRemovedArticles';
 
 const GeneralNews = ({language, startDate, endDate}) => {
   const [newsArticles, setNewsArticles] = useState([]);
@@ -27,8 +28,10 @@ const GeneralNews = ({language, startDate, endDate}) => {
             sortBy: sortBy,
           },
         });
+
+        const filteredArticles = filterRemovedArticles(response.data.articles);
         
-        const uniqueArticles = deduplicateArticles(response.data.articles);
+        const uniqueArticles = deduplicateArticles(filteredArticles);
         setNewsArticles(uniqueArticles);
       } catch (error) {
         console.error("Error fetching news:", error);
