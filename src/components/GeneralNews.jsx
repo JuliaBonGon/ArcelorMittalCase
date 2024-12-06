@@ -5,7 +5,7 @@ import axios from 'axios';
 import { formatDate } from '../utils/dateUtils';
 import deduplicateArticles from '../utils/deduplicateNews';
 
-const GeneralNews = ({language}) => {
+const GeneralNews = ({language, startDate, endDate}) => {
   const [newsArticles, setNewsArticles] = useState([]);
   const [sortBy, setSortBy] = useState('publishedAt');
 
@@ -22,6 +22,8 @@ const GeneralNews = ({language}) => {
             apiKey: '782a0910ac184d9fabd9b80e27529016', 
             q: keywords, 
             language: language, 
+            from: startDate ? startDate.toISOString().split('T')[0] : undefined,
+            to: endDate ? endDate.toISOString().split('T')[0] : undefined,
             sortBy: sortBy,
           },
         });
@@ -34,7 +36,7 @@ const GeneralNews = ({language}) => {
     };
 
     fetchNews();
-  }, [language, sortBy]); 
+  }, [language, sortBy, startDate, endDate]); 
 
   const title = language === 'en' ? 'Steel Industry General News' : 'Staal Industrie Algemeen Nieuws';
 
