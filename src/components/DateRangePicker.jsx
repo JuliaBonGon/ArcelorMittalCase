@@ -12,7 +12,6 @@ const DateRangePicker = ({ dateRange, onChange }) => {
 
   return (
     <div style={{ marginTop: '20px' }}>
-      <h3>Select Date Range:</h3>
       <DatePicker
         selectsRange
         startDate={startDate}

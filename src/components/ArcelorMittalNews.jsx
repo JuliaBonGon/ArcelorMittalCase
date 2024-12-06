@@ -4,8 +4,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { formatDate } from '../utils/dateUtils';
 import deduplicateArticles from '../utils/deduplicateNews';
+import filterRemovedArticles from '../utils/filterRemovedArticles';
 
-const ArcelorMittalNews = ({language}) => {
+const ArcelorMittalNews = ({language, startDate, endDate}) => {
   const [newsArticles, setNewsArticles] = useState([]);
   const [sortBy, setSortBy] = useState('publishedAt');
 
@@ -18,23 +19,24 @@ const ArcelorMittalNews = ({language}) => {
             q: 'ArcelorMittal',
             language: language, 
             sortBy: sortBy,
+            from: startDate ? startDate.toISOString().split('T')[0] : undefined,
+            to: endDate ? endDate.toISOString().split('T')[0] : undefined,
           },
         });
+        console.log("Response from News API:", response.data);
+        const filteredArticles = filterRemovedArticles(response.data.articles);
 
-        const filteredArticles = deduplicateArticles(response.data.articles.filter(
-          (article) =>
-            article.title.toLowerCase().includes("arcelormittal") ||
-            article.description?.toLowerCase().includes("arcelormittal")
-        ));
+        console.log("Filtered Articles:", filteredArticles);
 
-        setNewsArticles(filteredArticles);
+        const uniqueArticles = deduplicateArticles(filteredArticles);
+        setNewsArticles(uniqueArticles);
       } catch (error) {
         console.error("Error fetching ArcelorMittal news:", error);
       }
     };
 
     fetchNews();
-  }, [language, sortBy]);
+  }, [language, sortBy, startDate, endDate]);
 
   const title = language === 'en' ? 'ArcelorMittal News' : 'ArcelorMittal Nieuws';
   
@@ -50,6 +52,9 @@ const ArcelorMittalNews = ({language}) => {
         { value: 'publishedAt', label: 'Nieuwste eerst' },
       ];
 
+
+      console.log("News Articles:", newsArticles);
+      
   return (
     <div div style={{ padding: '20px' }}>
       <h1>{title}</h1>
