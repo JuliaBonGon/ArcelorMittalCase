@@ -11,6 +11,7 @@
     "@microsoft/teamsfx": "^2.2.0",
     "@microsoft/teamsfx-react": "^3.0.0",
     "axios": "^0.21.1",
+    "date-fns": "^4.1.0",
     "fast-levenshtein": "^3.0.0",
     "moment": "^2.30.1",
     "react": "^18.2.0",

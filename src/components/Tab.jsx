@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import GeneralNews from './GeneralNews';
 import ArcelorMittalNews from './ArcelorMittalNews';
 import LanguageSelector from './LanguageSelector';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import DateRangePicker from './DateRangePicker';
+
 
 const NewsDashboard = () => {
   const [language, setLanguage] = useState('en');
@@ -13,16 +13,10 @@ const NewsDashboard = () => {
   const [dateRange, setDateRange] = useState ([null, null]);
   const [startDate, endDate] = dateRange;
 
-  const handleDateRangeChange = (dates) => {
-    setDateRange (dates);
-  };
-
   return (
     <div style={{ padding: '20px' }}>
           <h1>News Dashboard</h1>
-        
           <LanguageSelector language={language} setLanguage={setLanguage} />
-
 
        <div>
         <button
@@ -35,18 +29,7 @@ const NewsDashboard = () => {
         </button>
        </div>
 
-       <div style={{ marginTop: '20px' }}>
-        <h3>Select Date Range:</h3>
-        <DatePicker
-          selectsRange
-          startDate={startDate}
-          endDate={endDate}
-          onChange={handleDateRangeChange}
-          isClearable
-          dateFormat="dd-MM-yyyy"
-          placeholderText="Choose date range"
-        />
-      </div>
+       <DateRangePicker dateRange={dateRange} onChange={setDateRange} />
        
        {selectedNews === 'general' && (
         <div><GeneralNews language={language} startDate={startDate} endDate={endDate} /></div>
