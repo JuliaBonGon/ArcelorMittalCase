@@ -55,6 +55,8 @@ const GeneralNews = ({language, startDate, endDate}) => {
         { value: 'publishedAt', label: 'Nieuwste eerst' },
       ];
 
+  const noNewsFound = language === 'en' ? 'No news found for the selected dates' : 'Geen nieuws gevonden voor de geselecteerde datumbereik';
+
   return (
     <div div style={{ padding: '20px' }}>
      
@@ -74,6 +76,10 @@ const GeneralNews = ({language, startDate, endDate}) => {
         </select>
       </div>
       
+      {newsArticles.length === 0 ? (
+        <p>{noNewsFound}</p>
+      ) : (
+
       <ul style={{ listStyleType: 'none', padding: 0 }}>
         {newsArticles.map((article, index) => (
           <li key={index} style={{ marginBottom: '20px' }}>
@@ -103,6 +109,7 @@ const GeneralNews = ({language, startDate, endDate}) => {
           </li>
         ))}
       </ul>
+      )}
     </div>
   );
 };
