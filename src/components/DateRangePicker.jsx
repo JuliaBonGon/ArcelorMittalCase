@@ -21,6 +21,7 @@ const DateRangePicker = ({ dateRange, onChange }) => {
         dateFormat="dd-MM-yyyy"
         placeholderText="Choose date range"
         locale="en-GB"
+        maxDate={new Date()}
       />
     </div>
   );

@@ -23,10 +23,10 @@ const ArcelorMittalNews = ({language, startDate, endDate}) => {
             to: endDate ? endDate.toISOString().split('T')[0] : undefined,
           },
         });
-        console.log("Response from News API:", response.data);
+       
+        console.log("API Response:", response.data);
+        
         const filteredArticles = filterRemovedArticles(response.data.articles);
-
-        console.log("Filtered Articles:", filteredArticles);
 
         const uniqueArticles = deduplicateArticles(filteredArticles);
         setNewsArticles(uniqueArticles);
@@ -53,8 +53,7 @@ const ArcelorMittalNews = ({language, startDate, endDate}) => {
       ];
 
 
-      console.log("News Articles:", newsArticles);
-      
+
   return (
     <div div style={{ padding: '20px' }}>
       <h1>{title}</h1>

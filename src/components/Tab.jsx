@@ -32,11 +32,17 @@ const NewsDashboard = () => {
        <DateRangePicker dateRange={dateRange} onChange={setDateRange} />
        
        {selectedNews === 'general' && (
-        <div><GeneralNews language={language} startDate={startDate} endDate={endDate} /></div>
+        <div><GeneralNews 
+        language={language} 
+        startDate={startDate} 
+        endDate={endDate} /></div>
       )}
 
       {selectedNews === 'arcelormittal' && (
-        <div><ArcelorMittalNews language={language} /></div>
+        <div><ArcelorMittalNews 
+        language={language} 
+        startDate={startDate} 
+        endDate={endDate}  /></div>
       )}
       </div>
   );
