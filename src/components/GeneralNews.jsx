@@ -20,7 +20,7 @@ const GeneralNews = ({language, startDate, endDate}) => {
 
         const response = await axios.get("https://newsapi.org/v2/everything", {
           params: {
-            apiKey: '782a0910ac184d9fabd9b80e27529016', 
+            apiKey: process.env.REACT_APP_API_KEY,
             q: keywords, 
             language: language, 
             from: startDate ? startDate.toISOString().split('T')[0] : undefined,

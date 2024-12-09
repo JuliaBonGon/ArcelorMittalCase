@@ -15,7 +15,7 @@ const ArcelorMittalNews = ({language, startDate, endDate}) => {
       try {
         const response = await axios.get("https://newsapi.org/v2/everything", {
           params: {
-            apiKey: '782a0910ac184d9fabd9b80e27529016',
+            apiKey: process.env.REACT_APP_API_KEY,
             q: 'ArcelorMittal',
             language: language, 
             sortBy: sortBy,

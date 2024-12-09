@@ -15,4 +15,5 @@ appPackage/build
 /coverage
 
 # Dev tool directories
-/devTools/
+/devTools/.env.local.user
+.env
