@@ -51,7 +51,7 @@ const ArcelorMittalNews = ({language}) => {
       ];
 
   return (
-    <div div style={{ padding: '20px' }}>
+    <div style={{ padding: '20px' }}>
       <h1>{title}</h1>
       <div>
       <label htmlFor="sortBy" style={{ marginRight: '10px' }}></label>
@@ -88,7 +88,7 @@ const ArcelorMittalNews = ({language}) => {
                     width: '200px',  
                     height: 'auto', 
                     marginLeft: '20px', 
-                    borderRadius: '8px' 
+                    borderRadius: '8px'
                   }} 
                 />
               )}

@@ -7,7 +7,7 @@ import LanguageSelector from './LanguageSelector';
 import DateRangePicker from './DateRangePicker';
 
 
-const NewsDashboard = () => {
+const NewsDashboard = ({setShareArticle}) => {
   const [language, setLanguage] = useState('en');
   const [selectedNews, setSelectedNews] = useState('general');
   const [dateRange, setDateRange] = useState ([null, null]);
@@ -32,7 +32,7 @@ const NewsDashboard = () => {
        <DateRangePicker dateRange={dateRange} onChange={setDateRange} />
        
        {selectedNews === 'general' && (
-        <div><GeneralNews language={language} startDate={startDate} endDate={endDate} /></div>
+        <div><GeneralNews language={language} startDate={startDate} endDate={endDate} setShareArticle={setShareArticle} /></div>
       )}
 
       {selectedNews === 'arcelormittal' && (

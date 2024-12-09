@@ -1,4 +1,5 @@
 // https://fluentsite.z22.web.core.windows.net/quick-start
+import { useState } from "react";
 import {
   FluentProvider,
   teamsLightTheme,
@@ -14,6 +15,7 @@ import TermsOfUse from "./TermsOfUse";
 import Tab from "./Tab";
 import { TeamsFxContext } from "./Context";
 import config from "./sample/lib/config";
+import ShareForm from "./ShareForm";
 
 /**
  * The main app which handles the initialization and routing
@@ -24,6 +26,9 @@ export default function App() {
     initiateLoginEndpoint: config.initiateLoginEndpoint,
     clientId: config.clientId,
   });
+
+  const [shareArticle, setShareArticle] = useState();
+
   return (
     <TeamsFxContext.Provider value={{ theme, themeString, teamsUserCredential }}>
       <FluentProvider
@@ -46,8 +51,9 @@ export default function App() {
             <Routes>
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/termsofuse" element={<TermsOfUse />} />
-              <Route path="/tab" element={<Tab />} />
-              <Route path="*" element={<Navigate to={"/tab"} />}></Route>
+              <Route path="/tab" element={<Tab setShareArticle={setShareArticle} />} />
+              <Route path="*" element={<Navigate to={"/tab"} />} />
+              <Route path="/tab/share" element={<ShareForm article={shareArticle} />} />
             </Routes>
           )}
         </Router>
