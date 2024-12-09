@@ -20,7 +20,7 @@ const GeneralNews = ({language, startDate, endDate}) => {
 
         const response = await axios.get("https://newsapi.org/v2/everything", {
           params: {
-            apiKey: process.env.REACT_APP_API_KEY,
+            apiKey: process.env.REACT_APP_API_KEY, 
             q: keywords, 
             language: language, 
             from: startDate ? startDate.toISOString().split('T')[0] : undefined,
@@ -54,6 +54,8 @@ const GeneralNews = ({language, startDate, endDate}) => {
         { value: 'popularity', label: 'Populariteit' },
         { value: 'publishedAt', label: 'Nieuwste eerst' },
       ];
+
+  const noNewsFound = language === 'en' ? 'No news found for the selected dates' : 'Geen nieuws gevonden voor de geselecteerde periode';
 
   return (
     <div div style={{ padding: '20px' }}>
