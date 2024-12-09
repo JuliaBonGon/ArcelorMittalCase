@@ -15,7 +15,7 @@ import TermsOfUse from "./TermsOfUse";
 import Tab from "./Tab";
 import { TeamsFxContext } from "./Context";
 import config from "./sample/lib/config";
-import ShareForm from "./ShareForm";
+import ShareForm from "./ShareForm/ShareForm";
 
 /**
  * The main app which handles the initialization and routing

@@ -1,0 +1,16 @@
+#shareFormWrapper {
+    width: max-content;
+    height: max-content;
+    margin: auto;
+    padding: 10px;
+    background-color: rgb(245, 245, 245);
+    border-radius: 10px;
+}
+
+    #shareFormWrapper>div {
+        margin: auto;
+    }
+
+    #shareFormTitle {
+        margin: auto;
+    }
