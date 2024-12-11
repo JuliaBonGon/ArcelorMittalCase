@@ -135,24 +135,6 @@ const NewsDashboard = () => {
           </div>
         </section>
 
-        {/* {selectedNews === "general" && (
-        <GeneralNews
-          language={language}
-          startDate={startDate}
-          endDate={endDate}
-          setFetchedNews={setFetchedNews}
-        />
-      )} */}
-
-        {/* {selectedNews === "arcelor" && (
-          <ArcelorMittalNews
-            language={language}
-            startDate={startDate}
-            endDate={endDate}
-            setFetchedNews={setFetchedNews}
-          />
-        )} */}
-
         {/* Render News Layout */}
         <div className="container">
           {/* Large Left Box */}
