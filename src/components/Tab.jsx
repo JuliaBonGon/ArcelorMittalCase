@@ -46,16 +46,11 @@ const NewsDashboard = () => {
         { value: "publishedAt", label: "Nieuwste eerst" },
       ];
 
-
   const [sortBy, setSortBy] = useState("publishedAt");
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        // const keywords =
-        //   language === "en"
-        //     ? "steel AND (industry OR manufacturing OR production)"
-        //     : "staal AND (industrie OR productie)";
         const keywords = selectedNews === "arcelormittal"
         ? "arcelormittal"
         : language === "en"
@@ -133,24 +128,6 @@ const NewsDashboard = () => {
             <DateRangePicker dateRange={dateRange} onChange={setDateRange} />
           </div>
         </section>
-
-        {/* {selectedNews === "general" && (
-        <GeneralNews
-          language={language}
-          startDate={startDate}
-          endDate={endDate}
-          setFetchedNews={setFetchedNews}
-        />
-      )} */}
-
-        {/* {selectedNews === "arcelor" && (
-          <ArcelorMittalNews
-            language={language}
-            startDate={startDate}
-            endDate={endDate}
-            setFetchedNews={setFetchedNews}
-          />
-        )} */}
 
         {/* Render News Layout */}
         <div className="container">
