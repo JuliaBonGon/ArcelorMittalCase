@@ -41,21 +41,21 @@ const ArcelorMittalNews = ({
     fetchNews();
   }, [language, sortBy, startDate, endDate, setFetchedNews]);
 
-  // const title =
-  //   language === "en" ? "ArcelorMittal News" : "ArcelorMittal Nieuws";
+  const title =
+    language === "en" ? "ArcelorMittal News" : "ArcelorMittal Nieuws";
 
-  // const sortOptions =
-  //   language === "en"
-  //     ? [
-  //         { value: "relevancy", label: "Relevancy" },
-  //         { value: "popularity", label: "Popularity" },
-  //         { value: "publishedAt", label: "Newest first" },
-  //       ]
-  //     : [
-  //         { value: "relevancy", label: "Relevantie" },
-  //         { value: "popularity", label: "Populariteit" },
-  //         { value: "publishedAt", label: "Nieuwste eerst" },
-  //       ];
+  const sortOptions =
+    language === "en"
+      ? [
+          { value: "relevancy", label: "Relevancy" },
+          { value: "popularity", label: "Popularity" },
+          { value: "publishedAt", label: "Newest first" },
+        ]
+      : [
+          { value: "relevancy", label: "Relevantie" },
+          { value: "popularity", label: "Populariteit" },
+          { value: "publishedAt", label: "Nieuwste eerst" },
+        ];
 
   // return (
   //   <div div style={{ padding: "20px" }}>
@@ -108,7 +108,7 @@ const ArcelorMittalNews = ({
   //     </ul>
   //   </div>
   // );
-  return null;
+  // return null;
   const noNewsFound =
     language === "en"
       ? "No news found for the selected dates."
@@ -131,7 +131,7 @@ const ArcelorMittalNews = ({
           ))}
         </select>
       </div>
-      {newsArticles.length === 0 ? (
+      {/* {newsArticles.length === 0 ? (
         <p style={{ color: "red", fontWeight: "bold" }}>{noNewsFound}</p>
       ) : (
         <ul style={{ listStyleType: "none", padding: 0 }}>
@@ -166,7 +166,7 @@ const ArcelorMittalNews = ({
             </li>
           ))}
         </ul>
-      )}
+      )} */}
     </div>
   );
 };
