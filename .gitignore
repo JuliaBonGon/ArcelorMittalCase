@@ -18,4 +18,4 @@ appPackage/build
 
 # Dev tool directories
 /devTools
-.env
+
