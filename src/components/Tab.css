@@ -161,7 +161,9 @@ body {
 .bottom-box img {
   width: 100%;
   height: auto;
+  max-height: 50%;
   border-radius: 10px;
+  object-fit: cover;
 }
 .footer {
   background-color: #666;

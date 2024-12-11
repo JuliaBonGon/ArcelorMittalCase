@@ -131,7 +131,7 @@ const ArcelorMittalNews = ({
           ))}
         </select>
       </div>
-      {newsArticles.length === 0 ? (
+      {/* {newsArticles.length === 0 ? (
         <p style={{ color: "red", fontWeight: "bold" }}>{noNewsFound}</p>
       ) : (
         <ul style={{ listStyleType: "none", padding: 0 }}>
@@ -166,7 +166,7 @@ const ArcelorMittalNews = ({
             </li>
           ))}
         </ul>
-      )}
+      )} */}
     </div>
   );
 };

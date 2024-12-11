@@ -133,7 +133,7 @@ const GeneralNews = ({ language, startDate, endDate, setFetchedNews }) => {
           ))}
         </select>
       </div>
-
+{/* 
       {newsArticles.length === 0 ? (
         <p>{noNewsFound}</p>
       ) : (
@@ -169,7 +169,7 @@ const GeneralNews = ({ language, startDate, endDate, setFetchedNews }) => {
             </li>
           ))}
         </ul>
-      )}
+      )} */}
     </div>
   );
 };
