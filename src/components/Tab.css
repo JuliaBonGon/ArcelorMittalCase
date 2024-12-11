@@ -68,6 +68,12 @@ body {
   color: white;
 }
 
+.no-news {
+  color: rgb(120, 13, 13);
+  font-weight: bold;
+  margin-left: 20px;
+}
+
 /* Cards
  Section */
 .container {

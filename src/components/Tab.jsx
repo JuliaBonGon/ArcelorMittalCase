@@ -27,7 +27,7 @@ const NewsDashboard = () => {
   const noNewsFound =
     language === "en"
       ? "No news found for the selected dates"
-      : "Geen nieuws gevonden voor de geselecteerde datumbereik";
+      : "Geen nieuws gevonden voor de geselecteerde periode";
 
   const title =
     language === "en"
@@ -129,58 +129,64 @@ const NewsDashboard = () => {
             <DateRangePicker dateRange={dateRange} onChange={setDateRange} />
           </div>
         </section>
-
-        {/* Render News Layout */}
-        <div className="container">
-          {/* Large Left Box */}
-          {mainNews && (
-            <div className="large-box">
-              <img src={mainNews.urlToImage} alt="Main News" />
-              <div className="card-content">
-                <h3>{mainNews.title}</h3>
-                <p>
-                  {mainNews.source.name} •{" "}
-                  {formatDate(mainNews.publishedAt, language)}
-                </p>
+       
+        {fetchedNews.length === 0 ? (
+          <p className="no-news">{noNewsFound}</p>
+          
+        ) : (
+          <>
+          {/* Render News Layout */}
+          <div className="container">
+            {/* Large Left Box */}
+            {mainNews && (
+              <div className="large-box">
+                <img src={mainNews.urlToImage} alt="Main News" />
+                <div className="card-content">
+                  <h3>{mainNews.title}</h3>
+                  <p>
+                    {mainNews.source.name} •{" "}
+                    {formatDate(mainNews.publishedAt, language)}
+                  </p>
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Right Boxes */}
-          {rightNews.map((article, index) => (
-            <div key={index} className="small-box">
-              <img src={article.urlToImage} alt="News" />
-              <div className="card-content">
-                <h3>{article.title}</h3>
-                <p>
-                  {article.source.name} •{" "}
-                  {/* {new Date(article.publishedAt).toLocaleDateString()} */}
-                  {formatDate(article.publishedAt, language)}
-                </p>
-              </div>
-            </div>
-          ))}
-
-          {/* Bottom Boxes */}
-          <div className="bottom-container">
-            {bottomNews.map((article, index) => (
-              <div key={index} className="bottom-box">
+            {/* Right Boxes */}
+            {rightNews.map((article, index) => (
+              <div key={index} className="small-box">
                 <img src={article.urlToImage} alt="News" />
                 <div className="card-content">
                   <h3>{article.title}</h3>
                   <p>
                     {article.source.name} •{" "}
+                    {/* {new Date(article.publishedAt).toLocaleDateString()} */}
                     {formatDate(article.publishedAt, language)}
                   </p>
                 </div>
               </div>
             ))}
-          </div>
-        </div>
 
+            {/* Bottom Boxes */}
+            <div className="bottom-container">
+              {bottomNews.map((article, index) => (
+                <div key={index} className="bottom-box">
+                  <img src={article.urlToImage} alt="News" />
+                  <div className="card-content">
+                    <h3>{article.title}</h3>
+                    <p>
+                      {article.source.name} •{" "}
+                      {formatDate(article.publishedAt, language)}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          </>
+        )}
         <footer className="footer"></footer>
       </div>
-    </>
+    </>   
   );
 };
 
