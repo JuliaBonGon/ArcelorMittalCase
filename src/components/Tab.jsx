@@ -36,16 +36,15 @@ const NewsDashboard = () => {
   const sortOptions =
     language === "en"
       ? [
-        { value: "relevancy", label: "Relevancy" },
-        { value: "popularity", label: "Popularity" },
-        { value: "publishedAt", label: "Newest first" },
-      ]
+          { value: "relevancy", label: "Relevancy" },
+          { value: "popularity", label: "Popularity" },
+          { value: "publishedAt", label: "Newest first" },
+        ]
       : [
-        { value: "relevancy", label: "Relevantie" },
-        { value: "popularity", label: "Populariteit" },
-        { value: "publishedAt", label: "Nieuwste eerst" },
-      ];
-
+          { value: "relevancy", label: "Relevantie" },
+          { value: "popularity", label: "Populariteit" },
+          { value: "publishedAt", label: "Nieuwste eerst" },
+        ];
 
   const [sortBy, setSortBy] = useState("publishedAt");
 
@@ -56,11 +55,12 @@ const NewsDashboard = () => {
         //   language === "en"
         //     ? "steel AND (industry OR manufacturing OR production)"
         //     : "staal AND (industrie OR productie)";
-        const keywords = selectedNews === "arcelormittal"
-        ? "arcelormittal"
-        : language === "en"
-          ? "steel AND (industry OR manufacturing OR production)"
-          : "staal AND (industrie OR productie)";
+        const keywords =
+          selectedNews === "arcelormittal"
+            ? "arcelormittal"
+            : language === "en"
+            ? "steel AND (industry OR manufacturing OR production)"
+            : "staal AND (industrie OR productie)";
 
         const response = await axios.get("https://newsapi.org/v2/everything", {
           params: {
@@ -123,8 +123,9 @@ const NewsDashboard = () => {
             </button>
 
             <button
-              className={`icon ${selectedNews === "arcelormittal" ? "active" : ""
-                }`}
+              className={`icon ${
+                selectedNews === "arcelormittal" ? "active" : ""
+              }`}
               onClick={() => setSelectedNews("arcelormittal")}
             >
               ArcelorMittal News
