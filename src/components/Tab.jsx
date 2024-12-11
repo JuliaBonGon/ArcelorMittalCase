@@ -36,26 +36,31 @@ const NewsDashboard = () => {
   const sortOptions =
     language === "en"
       ? [
-        { value: "relevancy", label: "Relevancy" },
-        { value: "popularity", label: "Popularity" },
-        { value: "publishedAt", label: "Newest first" },
-      ]
+          { value: "relevancy", label: "Relevancy" },
+          { value: "popularity", label: "Popularity" },
+          { value: "publishedAt", label: "Newest first" },
+        ]
       : [
-        { value: "relevancy", label: "Relevantie" },
-        { value: "popularity", label: "Populariteit" },
-        { value: "publishedAt", label: "Nieuwste eerst" },
-      ];
+          { value: "relevancy", label: "Relevantie" },
+          { value: "popularity", label: "Populariteit" },
+          { value: "publishedAt", label: "Nieuwste eerst" },
+        ];
 
   const [sortBy, setSortBy] = useState("publishedAt");
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const keywords = selectedNews === "arcelormittal"
-        ? "arcelormittal"
-        : language === "en"
-          ? "steel AND (industry OR manufacturing OR production)"
-          : "staal AND (industrie OR productie)";
+        // const keywords =
+        //   language === "en"
+        //     ? "steel AND (industry OR manufacturing OR production)"
+        //     : "staal AND (industrie OR productie)";
+        const keywords =
+          selectedNews === "arcelormittal"
+            ? "arcelormittal"
+            : language === "en"
+            ? "steel AND (industry OR manufacturing OR production)"
+            : "staal AND (industrie OR productie)";
 
         const response = await axios.get("https://newsapi.org/v2/everything", {
           params: {
@@ -118,8 +123,9 @@ const NewsDashboard = () => {
             </button>
 
             <button
-              className={`icon ${selectedNews === "arcelormittal" ? "active" : ""
-                }`}
+              className={`icon ${
+                selectedNews === "arcelormittal" ? "active" : ""
+              }`}
               onClick={() => setSelectedNews("arcelormittal")}
             >
               ArcelorMittal News
@@ -128,62 +134,64 @@ const NewsDashboard = () => {
             <DateRangePicker dateRange={dateRange} onChange={setDateRange} />
           </div>
         </section>
-
-{fetchedNews.length === 0
-? <p>{noNewsFound}</p>
-: (
-  <>
-        {/* Render News Layout */}
-        <div className="container">
-          {/* Large Left Box */}
-          {mainNews && (
-            <div className="large-box">
-              <img src={mainNews.urlToImage} alt="Main News" />
-              <div className="card-content">
-                <a href={mainNews.url}><h3>{mainNews.title}</h3></a>
-                <p>
-                  {mainNews.source.name} •{" "}
-                  {formatDate(mainNews.publishedAt, language)}
-                </p>
+       
+        {fetchedNews.length === 0 ? (
+          <p className="no-news">{noNewsFound}</p>
+          
+        ) : (
+          <>
+          {/* Render News Layout */}
+          <div className="container">
+            {/* Large Left Box */}
+            {mainNews && (
+              <div className="large-box">
+                <img src={mainNews.urlToImage} alt="Main News" />
+                <div className="card-content">
+                  <h3>{mainNews.title}</h3>
+                  <p>
+                    {mainNews.source.name} •{" "}
+                    {formatDate(mainNews.publishedAt, language)}
+                  </p>
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Right Boxes */}
-          {rightNews.map((article, index) => (
-            <div key={index} className="small-box">
-              <img src={article.urlToImage} alt="News" />
-              <div className="card-content">
-                <h3>{article.title}</h3>
-                <p>
-                  {article.source.name} •{" "}
-                  {formatDate(article.publishedAt, language)}
-                </p>
-              </div>
-            </div>
-          ))}
-
-          {/* Bottom Boxes */}
-          <div className="bottom-container">
-            {bottomNews.map((article, index) => (
-              <div key={index} className="bottom-box">
+            {/* Right Boxes */}
+            {rightNews.map((article, index) => (
+              <div key={index} className="small-box">
                 <img src={article.urlToImage} alt="News" />
                 <div className="card-content">
                   <h3>{article.title}</h3>
                   <p>
                     {article.source.name} •{" "}
+                    {/* {new Date(article.publishedAt).toLocaleDateString()} */}
                     {formatDate(article.publishedAt, language)}
                   </p>
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-        </>)}
 
+            {/* Bottom Boxes */}
+            <div className="bottom-container">
+              {bottomNews.map((article, index) => (
+                <div key={index} className="bottom-box">
+                  <img src={article.urlToImage} alt="News" />
+                  <div className="card-content">
+                    <h3>{article.title}</h3>
+                    <p>
+                      {article.source.name} •{" "}
+                      {formatDate(article.publishedAt, language)}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          </>
+        )}
         <footer className="footer"></footer>
       </div>
-    </>
+    </>   
   );
 };
 
