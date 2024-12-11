@@ -7,12 +7,14 @@ build
 appPackage/build
 .deployment
 .localConfigs
+testing
 
 # dependencies
 /node_modules
 
 # testing
 /coverage
+testing
 
 # Dev tool directories
 /devTools/
