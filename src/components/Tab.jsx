@@ -26,7 +26,7 @@ const NewsDashboard = () => {
   const noNewsFound =
     language === "en"
       ? "No news found for the selected dates"
-      : "Geen nieuws gevonden voor de geselecteerde datumbereik";
+      : "Geen nieuws gevonden voor het geselecteerde datumbereik";
 
   const title =
     language === "en"
@@ -129,6 +129,10 @@ const NewsDashboard = () => {
           </div>
         </section>
 
+{fetchedNews.length === 0
+? <p>{noNewsFound}</p>
+: (
+  <>
         {/* Render News Layout */}
         <div className="container">
           {/* Large Left Box */}
@@ -136,7 +140,7 @@ const NewsDashboard = () => {
             <div className="large-box">
               <img src={mainNews.urlToImage} alt="Main News" />
               <div className="card-content">
-                <h3>{mainNews.title}</h3>
+                <a href={mainNews.url}><h3>{mainNews.title}</h3></a>
                 <p>
                   {mainNews.source.name} •{" "}
                   {formatDate(mainNews.publishedAt, language)}
@@ -153,7 +157,6 @@ const NewsDashboard = () => {
                 <h3>{article.title}</h3>
                 <p>
                   {article.source.name} •{" "}
-                  {/* {new Date(article.publishedAt).toLocaleDateString()} */}
                   {formatDate(article.publishedAt, language)}
                 </p>
               </div>
@@ -176,6 +179,7 @@ const NewsDashboard = () => {
             ))}
           </div>
         </div>
+        </>)}
 
         <footer className="footer"></footer>
       </div>
