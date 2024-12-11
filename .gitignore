@@ -2,6 +2,7 @@
 # TeamsFx files
 env/.env.*
 env/.env.local
+.env
 .DS_Store
 build
 appPackage/build
@@ -15,4 +16,5 @@ appPackage/build
 /coverage
 
 # Dev tool directories
-/devTools/
+/devTools
+.env

@@ -109,6 +109,66 @@ const ArcelorMittalNews = ({
   //   </div>
   // );
   return null;
+  const noNewsFound =
+    language === "en"
+      ? "No news found for the selected dates."
+      : "Geen nieuws gevonden voor de geselecteerde periode.";
+
+  return (
+    <div div style={{ padding: "20px" }}>
+      <h1>{title}</h1>
+      <div>
+        <label htmlFor="sortBy" style={{ marginRight: "10px" }}></label>
+        <select
+          id="sortBy"
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+        >
+          {sortOptions.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </div>
+      {newsArticles.length === 0 ? (
+        <p style={{ color: "red", fontWeight: "bold" }}>{noNewsFound}</p>
+      ) : (
+        <ul style={{ listStyleType: "none", padding: 0 }}>
+          {newsArticles.map((article, index) => (
+            <li key={index} style={{ marginBottom: "20px" }}>
+              <h2>
+                <a href={article.url} target="_blank" rel="noopener noreferrer">
+                  {article.title}
+                </a>
+              </h2>
+              <div style={{ display: "flex", alignItems: "flex-start" }}>
+                <div style={{ flex: 1 }}>
+                  <p>{article.description}</p>
+                  <p>
+                    {article.source.name},{" "}
+                    {formatDate(article.publishedAt, language)}
+                  </p>
+                </div>
+                {article.urlToImage && (
+                  <img
+                    src={article.urlToImage}
+                    alt={article.title}
+                    style={{
+                      width: "200px",
+                      height: "auto",
+                      marginLeft: "20px",
+                      borderRadius: "8px",
+                    }}
+                  />
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
 };
 
 export default ArcelorMittalNews;
