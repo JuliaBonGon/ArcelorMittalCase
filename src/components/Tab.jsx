@@ -1,6 +1,8 @@
 //src/components/Tab.jsx
 import "./Tab.css";
-
+{
+  /* Add some text for testing */
+}
 import React, { useState } from "react";
 import GeneralNews from "./GeneralNews";
 import ArcelorMittalNews from "./ArcelorMittalNews";
