@@ -68,6 +68,12 @@ body {
   color: white;
 }
 
+.no-news {
+  color: rgb(120, 13, 13);
+  font-weight: bold;
+  margin-left: 20px;
+}
+
 /* Cards
  Section */
 .container {
@@ -94,10 +100,16 @@ body {
 .card-content {
   padding: 15px;
 }
-.card-content h3 {
+.card-content>a,
+.card-content>a>h3 {
   font-size: 1.5rem;
   margin-bottom: 10px;
   color: #333;
+  text-decoration: none;
+}
+
+.card-content>a:hover {
+  text-decoration: underline;
 }
 
 .card-content p {

@@ -5,7 +5,6 @@ import axios from "axios";
 
 // import GeneralNews from "./GeneralNews";
 // import ArcelorMittalNews from "./ArcelorMittalNews";
-
 import LanguageSelector from "./LanguageSelector";
 import DateRangePicker from "./DateRangePicker";
 import { formatDate } from "../utils/dateUtils";
@@ -27,7 +26,7 @@ const NewsDashboard = () => {
   const noNewsFound =
     language === "en"
       ? "No news found for the selected dates"
-      : "Geen nieuws gevonden voor de geselecteerde datumbereik";
+      : "Geen nieuws gevonden voor het geselecteerde datumbereik";
 
   const title =
     language === "en"
@@ -52,11 +51,16 @@ const NewsDashboard = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const keywords = selectedNews === "arcelormittal"
-        ? "arcelormittal"
-        : language === "en"
-          ? "steel AND (industry OR manufacturing OR production)"
-          : "staal AND (industrie OR productie)";
+        // const keywords =
+        //   language === "en"
+        //     ? "steel AND (industry OR manufacturing OR production)"
+        //     : "staal AND (industrie OR productie)";
+        const keywords =
+          selectedNews === "arcelormittal"
+            ? "arcelormittal"
+            : language === "en"
+              ? "steel AND (industry OR manufacturing OR production)"
+              : "staal AND (industrie OR productie)";
 
         const response = await axios.get("https://newsapi.org/v2/everything", {
           params: {
@@ -130,54 +134,66 @@ const NewsDashboard = () => {
           </div>
         </section>
 
-        {/* Render News Layout */}
-        <div className="container">
-          {/* Large Left Box */}
-          {mainNews && (
-            <div className="large-box">
-              <img src={mainNews.urlToImage} alt="Main News" />
-              <div className="card-content">
-                <h3>{mainNews.title}</h3>
-                <p>
-                  {mainNews.source.name} •{" "}
-                  {formatDate(mainNews.publishedAt, language)}
-                </p>
-              </div>
-            </div>
-          )}
+        {fetchedNews.length === 0 ? (
+          <p className="no-news">{noNewsFound}</p>
 
-          {/* Right Boxes */}
-          {rightNews.map((article, index) => (
-            <div key={index} className="small-box">
-              <img src={article.urlToImage} alt="News" />
-              <div className="card-content">
-                <h3>{article.title}</h3>
-                <p>
-                  {article.source.name} •{" "}
-                  {/* {new Date(article.publishedAt).toLocaleDateString()} */}
-                  {formatDate(article.publishedAt, language)}
-                </p>
-              </div>
-            </div>
-          ))}
-
-          {/* Bottom Boxes */}
-          <div className="bottom-container">
-            {bottomNews.map((article, index) => (
-              <div key={index} className="bottom-box">
-                <img src={article.urlToImage} alt="News" />
-                <div className="card-content">
-                  <h3>{article.title}</h3>
-                  <p>
-                    {article.source.name} •{" "}
-                    {formatDate(article.publishedAt, language)}
-                  </p>
+        ) : (
+          <>
+            {/* Render News Layout */}
+            <div className="container">
+              {/* Large Left Box */}
+              {mainNews && (
+                <div className="large-box">
+                  <img src={mainNews.urlToImage} alt="Main News" />
+                  <div className="card-content">
+                    <a href={mainNews.url} target="_blank" rel="noreferrer">
+                      <h3>{mainNews.title}</h3>
+                    </a>
+                    <p>
+                      {mainNews.source.name} •{" "}
+                      {formatDate(mainNews.publishedAt, language)}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
+              )}
 
+              {/* Right Boxes */}
+              {rightNews.map((article, index) => (
+                <div key={index} className="small-box">
+                  <img src={article.urlToImage} alt="News" />
+                  <div className="card-content">
+                    <a href={article.url} target="_blank" rel="noreferrer">
+                      <h3>{article.title}</h3>
+                    </a>
+                    <p>
+                      {article.source.name} •{" "}
+                      {/* {new Date(article.publishedAt).toLocaleDateString()} */}
+                      {formatDate(article.publishedAt, language)}
+                    </p>
+                  </div>
+                </div>
+              ))}
+
+              {/* Bottom Boxes */}
+              <div className="bottom-container">
+                {bottomNews.map((article, index) => (
+                  <div key={index} className="bottom-box">
+                    <img src={article.urlToImage} alt="News" />
+                    <div className="card-content">
+                      <a href={article.url} target="_blank" rel="noreferrer">
+                        <h3>{article.title}</h3>
+                      </a>
+                      <p>
+                        {article.source.name} •{" "}
+                        {formatDate(article.publishedAt, language)}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
         <footer className="footer"></footer>
       </div>
     </>
