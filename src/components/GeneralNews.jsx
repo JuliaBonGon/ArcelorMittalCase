@@ -40,23 +40,23 @@ const GeneralNews = ({ language, startDate, endDate, setFetchedNews }) => {
     fetchNews();
   }, [language, sortBy, startDate, endDate, setFetchedNews]);
 
-  // const title =
-  //   language === "en"
-  //     ? "Steel Industry General News"
-  //     : "Staal Industrie Algemeen Nieuws";
+  const title =
+    language === "en"
+      ? "Steel Industry General News"
+      : "Staal Industrie Algemeen Nieuws";
 
-  // const sortOptions =
-  //   language === "en"
-  //     ? [
-  //         { value: "relevancy", label: "Relevancy" },
-  //         { value: "popularity", label: "Popularity" },
-  //         { value: "publishedAt", label: "Newest first" },
-  //       ]
-  //     : [
-  //         { value: "relevancy", label: "Relevantie" },
-  //         { value: "popularity", label: "Populariteit" },
-  //         { value: "publishedAt", label: "Nieuwste eerst" },
-  //       ];
+  const sortOptions =
+    language === "en"
+      ? [
+          { value: "relevancy", label: "Relevancy" },
+          { value: "popularity", label: "Popularity" },
+          { value: "publishedAt", label: "Newest first" },
+        ]
+      : [
+          { value: "relevancy", label: "Relevantie" },
+          { value: "popularity", label: "Populariteit" },
+          { value: "publishedAt", label: "Nieuwste eerst" },
+        ];
 
   // return (
   //   <div div style={{ padding: "20px" }}>
@@ -110,7 +110,7 @@ const GeneralNews = ({ language, startDate, endDate, setFetchedNews }) => {
   //     </ul>
   //   </div>
   // );
-  return null;
+  // return null;
   const noNewsFound =
     language === "en"
       ? "No news found for the selected dates"
