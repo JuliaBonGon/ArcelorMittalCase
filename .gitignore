@@ -1,8 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 # TeamsFx files
+.env
 env/.env.*.user
 env/.env.local
-.env
 .DS_Store
 build
 appPackage/build
@@ -17,4 +17,4 @@ appPackage/build
 
 # Dev tool directories
 /devTools
-.env
+
