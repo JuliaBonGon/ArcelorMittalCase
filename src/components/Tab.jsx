@@ -146,7 +146,7 @@ const NewsDashboard = () => {
                 <div className="large-box">
                   <img src={mainNews.urlToImage} alt="Main News" />
                   <div className="card-content">
-                    <a href={mainNews.url}>
+                    <a href={mainNews.url} target="_blank">
                       <h3>{mainNews.title}</h3>
                     </a>
                     <p>
@@ -162,7 +162,7 @@ const NewsDashboard = () => {
                 <div key={index} className="small-box">
                   <img src={article.urlToImage} alt="News" />
                   <div className="card-content">
-                    <a href={article.url}>
+                    <a href={article.url} target="_blank">
                       <h3>{article.title}</h3>
                     </a>
                     <p>
@@ -180,7 +180,7 @@ const NewsDashboard = () => {
                   <div key={index} className="bottom-box">
                     <img src={article.urlToImage} alt="News" />
                     <div className="card-content">
-                      <a href={article.url}>
+                      <a href={article.url} target="_blank">
                         <h3>{article.title}</h3>
                       </a>
                       <p>
