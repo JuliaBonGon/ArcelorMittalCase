@@ -20,17 +20,10 @@ const GeneralNews = ({ language, startDate, endDate, setFetchedNews }) => {
         const response = await axios.get("https://newsapi.org/v2/everything", {
           params: {
             apiKey: process.env.REACT_APP_API_KEY,
-<<<<<<< HEAD
             q: keywords,
             language: language,
             from: startDate ? startDate.toISOString().split("T")[0] : undefined,
             to: endDate ? endDate.toISOString().split("T")[0] : undefined,
-=======
-            q: keywords, 
-            language: language, 
-            from: startDate ? startDate.toISOString().split('T')[0] : undefined,
-            to: endDate ? endDate.toISOString().split('T')[0] : undefined,
->>>>>>> DevBranch
             sortBy: sortBy,
           },
         });
@@ -65,7 +58,6 @@ const GeneralNews = ({ language, startDate, endDate, setFetchedNews }) => {
   //         { value: "publishedAt", label: "Nieuwste eerst" },
   //       ];
 
-<<<<<<< HEAD
   // return (
   //   <div div style={{ padding: "20px" }}>
   //     <h1>{title}</h1>
@@ -119,15 +111,16 @@ const GeneralNews = ({ language, startDate, endDate, setFetchedNews }) => {
   //   </div>
   // );
   return null;
-=======
-  const noNewsFound = language === 'en' ? 'No news found for the selected dates' : 'Geen nieuws gevonden voor de geselecteerde datumbereik';
+  const noNewsFound =
+    language === "en"
+      ? "No news found for the selected dates"
+      : "Geen nieuws gevonden voor de geselecteerde datumbereik";
 
   return (
-    <div div style={{ padding: '20px' }}>
-     
+    <div div style={{ padding: "20px" }}>
       <h1>{title}</h1>
-      <div style={{ marginBottom: '20px' }}>
-        <label htmlFor="sortBy" style={{ marginRight: '10px' }}></label>
+      <div style={{ marginBottom: "20px" }}>
+        <label htmlFor="sortBy" style={{ marginRight: "10px" }}></label>
         <select
           id="sortBy"
           value={sortBy}
@@ -140,44 +133,45 @@ const GeneralNews = ({ language, startDate, endDate, setFetchedNews }) => {
           ))}
         </select>
       </div>
-      
+
       {newsArticles.length === 0 ? (
         <p>{noNewsFound}</p>
       ) : (
-
-      <ul style={{ listStyleType: 'none', padding: 0 }}>
-        {newsArticles.map((article, index) => (
-          <li key={index} style={{ marginBottom: '20px' }}>
-            <h2>
-              <a href={article.url} target="_blank" rel="noopener noreferrer">
-                {article.title}
-              </a>
-            </h2>
-            <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-              <div style={{ flex: 1 }}>
-                <p>{article.description}</p>
-                <p>{article.source.name}, {formatDate(article.publishedAt, language)}</p>
+        <ul style={{ listStyleType: "none", padding: 0 }}>
+          {newsArticles.map((article, index) => (
+            <li key={index} style={{ marginBottom: "20px" }}>
+              <h2>
+                <a href={article.url} target="_blank" rel="noopener noreferrer">
+                  {article.title}
+                </a>
+              </h2>
+              <div style={{ display: "flex", alignItems: "flex-start" }}>
+                <div style={{ flex: 1 }}>
+                  <p>{article.description}</p>
+                  <p>
+                    {article.source.name},{" "}
+                    {formatDate(article.publishedAt, language)}
+                  </p>
+                </div>
+                {article.urlToImage && (
+                  <img
+                    src={article.urlToImage}
+                    alt={article.title}
+                    style={{
+                      width: "200px",
+                      height: "auto",
+                      marginLeft: "20px",
+                      borderRadius: "8px",
+                    }}
+                  />
+                )}
               </div>
-              {article.urlToImage && (
-                <img 
-                  src={article.urlToImage} 
-                  alt={article.title} 
-                  style={{ 
-                    width: '200px',  
-                    height: 'auto', 
-                    marginLeft: '20px', 
-                    borderRadius: '8px' 
-                  }} 
-                />
-              )}
-            </div>
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   );
->>>>>>> DevBranch
 };
 
 export default GeneralNews;
