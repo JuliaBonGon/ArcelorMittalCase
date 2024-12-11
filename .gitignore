@@ -7,7 +7,6 @@ build
 appPackage/build
 .deployment
 .localConfigs
-testing
 
 # dependencies
 /node_modules
