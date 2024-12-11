@@ -33,7 +33,7 @@
         font-size: 24px;
     }
 
-    #inputWrapper {
+    #personInputWrapper {
         margin: 20px auto 0 auto;
         display: flex;
         flex-direction: row;
@@ -50,7 +50,7 @@
             padding: 2px 5px;
         }
 
-    #personInputSubmit {
+    #shareSubmit {
         margin: 15px auto 20px auto;
         padding: 5px 20px;
     }

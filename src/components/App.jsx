@@ -15,7 +15,10 @@ import TermsOfUse from "./TermsOfUse";
 import Tab from "./Tab";
 import { TeamsFxContext } from "./Context";
 import config from "./sample/lib/config";
-import ShareForm from "./ShareForm/ShareForm";
+import {
+  ShareForm,
+  NotificationDummy
+} from "./index";
 
 /**
  * The main app which handles the initialization and routing
@@ -54,6 +57,7 @@ export default function App() {
               <Route path="/tab" element={<Tab setShareArticle={setShareArticle} />} />
               <Route path="*" element={<Navigate to={"/tab"} />} />
               <Route path="/tab/share" element={<ShareForm article={shareArticle} />} />
+              <Route path="/tab/notificationDummy" element={<NotificationDummy />} />
             </Routes>
           )}
         </Router>
