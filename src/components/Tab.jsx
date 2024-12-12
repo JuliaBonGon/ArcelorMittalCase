@@ -36,15 +36,15 @@ const NewsDashboard = () => {
   const sortOptions =
     language === "en"
       ? [
-        { value: "relevancy", label: "Relevancy" },
-        { value: "popularity", label: "Popularity" },
-        { value: "publishedAt", label: "Newest first" },
-      ]
+          { value: "relevancy", label: "Relevancy" },
+          { value: "popularity", label: "Popularity" },
+          { value: "publishedAt", label: "Newest first" },
+        ]
       : [
-        { value: "relevancy", label: "Relevantie" },
-        { value: "popularity", label: "Populariteit" },
-        { value: "publishedAt", label: "Nieuwste eerst" },
-      ];
+          { value: "relevancy", label: "Relevantie" },
+          { value: "popularity", label: "Populariteit" },
+          { value: "publishedAt", label: "Nieuwste eerst" },
+        ];
 
   const [sortBy, setSortBy] = useState("publishedAt");
 
@@ -59,8 +59,8 @@ const NewsDashboard = () => {
           selectedNews === "arcelormittal"
             ? "arcelormittal"
             : language === "en"
-              ? "steel AND (industry OR manufacturing OR production)"
-              : "staal AND (industrie OR productie)";
+            ? "steel AND (industry OR manufacturing OR production)"
+            : "staal AND (industrie OR productie)";
 
         const response = await axios.get("https://newsapi.org/v2/everything", {
           params: {
@@ -84,27 +84,8 @@ const NewsDashboard = () => {
 
     fetchNews();
   }, [language, sortBy, startDate, endDate, selectedNews]);
-
   return (
     <>
-      <div style={{ padding: "20px" }}>
-        <h1>{title}</h1>
-        <div style={{ marginBottom: "20px" }}>
-          <label htmlFor="sortBy" style={{ marginRight: "10px" }}></label>
-          <select
-            id="sortBy"
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-          >
-            {sortOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-
       <div className="news-dasboard">
         <header className="header">
           <h1 className="quote">News Dashboard</h1>
@@ -123,20 +104,39 @@ const NewsDashboard = () => {
             </button>
 
             <button
-              className={`icon ${selectedNews === "arcelormittal" ? "active" : ""
-                }`}
+              className={`icon ${
+                selectedNews === "arcelormittal" ? "active" : ""
+              }`}
               onClick={() => setSelectedNews("arcelormittal")}
             >
               ArcelorMittal News
             </button>
 
-            <DateRangePicker dateRange={dateRange} onChange={setDateRange} />
+            <div className="sort-by">
+              <h1>{title}</h1>
+              <div>
+                <label htmlFor="sortBy" className="sortLabel">
+                  Select an option:
+                </label>
+                <select
+                  id="sortBy"
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                >
+                  {sortOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <DateRangePicker dateRange={dateRange} onChange={setDateRange} />
+            </div>
           </div>
         </section>
 
         {fetchedNews.length === 0 ? (
           <p className="no-news">{noNewsFound}</p>
-
         ) : (
           <>
             {/* Render News Layout */}
@@ -158,6 +158,7 @@ const NewsDashboard = () => {
               )}
 
               {/* Right Boxes */}
+
               {rightNews.map((article, index) => (
                 <div key={index} className="small-box">
                   <img src={article.urlToImage} alt="News" />
@@ -165,6 +166,7 @@ const NewsDashboard = () => {
                     <a href={article.url} target="_blank" rel="noreferrer">
                       <h3>{article.title}</h3>
                     </a>
+
                     <p>
                       {article.source.name} •{" "}
                       {/* {new Date(article.publishedAt).toLocaleDateString()} */}
