@@ -114,7 +114,19 @@ body {
   cursor: pointer;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
-
+/*.react-datepicker__close-icon {
+  background-color: #f8f9fa; 
+  color: #007bff; 
+  border: 1px solid #ccc; 
+  border-radius: 50%; 
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}*/
 .date-range-picker input:focus {
   outline: none;
   border-color: #007bff;
