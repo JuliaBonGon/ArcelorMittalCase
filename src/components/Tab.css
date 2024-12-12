@@ -104,7 +104,10 @@ body {
   margin-top: 10px;
   padding-top: 10px;
 }
-.date-range-picker input {
+.date-range-picker .input-container {
+  display: flex;
+  align-items: center;
+  position: relative;
   width: 100%;
   padding: 10px;
   font-size: 14px;
@@ -113,12 +116,22 @@ body {
   background-color: #fff;
   cursor: pointer;
   transition: border-color 0.3s, box-shadow 0.3s;
+  /* display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%; */
 }
-/*.react-datepicker__close-icon {
-  background-color: #f8f9fa; 
-  color: #007bff; 
-  border: 1px solid #ccc; 
-  border-radius: 50%; 
+.date-range-picker input {
+  display: flex; /* Ensures the input and button are inline */
+  align-items: center; /* Aligns input and button vertically */
+  width: 100%;
+}
+.react-datepicker__input-container button {
+  background-color: #f8f9fa;
+  /* color: #007bff;
+  border: 1px solid #ccc;*/
+  margin-left: 8px;
+  border-radius: 30%;
   width: 30px;
   height: 30px;
   display: flex;
@@ -126,11 +139,12 @@ body {
   align-items: center;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
-}*/
+  border: 1px solid #ccc;
+}
 .date-range-picker input:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+  border-color: transparent;
+  box-shadow: none;
 }
 
 .no-news {
