@@ -11,12 +11,10 @@ import { formatDate } from "../utils/dateUtils";
 import deduplicateArticles from "../utils/deduplicateNews";
 import filterRemovedArticles from "../utils/filterRemovedArticles";
 
-const NewsDashboard = () => {
-  const [language, setLanguage] = useState("en");
-  const [selectedNews, setSelectedNews] = useState("general");
-  const [dateRange, setDateRange] = useState([null, null]);
-  const [fetchedNews, setFetchedNews] = useState([]);
-
+const NewsDashboard = ({setShareArticle}) => {
+  const [language, setLanguage] = useState('en');
+  const [selectedNews, setSelectedNews] = useState('general');
+  const [dateRange, setDateRange] = useState ([null, null]);
   const [startDate, endDate] = dateRange;
 
   const mainNews = fetchedNews[0];

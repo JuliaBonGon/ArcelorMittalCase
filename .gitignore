@@ -13,6 +13,7 @@ appPackage/build
 
 # testing
 /coverage
+testing
 
 # Dev tool directories
 /devTools
