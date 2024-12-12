@@ -1,0 +1,21 @@
+Ideas:
+- Newspaper overview based on API's
+- Custom notifications to send out to teammembers or individual users
+
+Research:
+- How to get a webpage into teams
+- Teams toolkit & documentation
+- Activity feed notifications option vs notification bot
+	→ AF handy for handling responses and sending recipiant to the app through to notification
+		is much more work than bot, but is more expansive and customizable than simple cards, as you can build up an entire interface
+	→ Notification bot handy for handling requests and sending quick customizable cards to users through a chat message
+		is much less work than AF noti's to get a decent result
+- Azure API scope & permissions
+- Microsoft Graph API needed for AF noti's
+
+Roadblocks:
+- Working to make react work with teams toolkit
+- API scopes blocking progress
+- Decision to fake AF noti's for demo's sake
+- Still learning version control (git) and working as a team when developing
+- Splitting research was difficult when we weren't sure what to research
