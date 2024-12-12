@@ -16,4 +16,5 @@ appPackage/build
 testing
 
 # Dev tool directories
-/devTools/
+/devTools
+

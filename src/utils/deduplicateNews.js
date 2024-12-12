@@ -1,4 +1,6 @@
-import levenshtein from 'fast-levenshtein'; // Correct import
+//src/utils/deduplicateNews
+
+import levenshtein from 'fast-levenshtein';
 
 const normalizeText = (text) => text.replace(/\s+/g, ' ').trim().toLowerCase();
 

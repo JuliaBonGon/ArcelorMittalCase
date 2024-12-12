@@ -8,7 +8,12 @@ import {
   Spinner,
   tokens,
 } from "@fluentui/react-components";
-import { HashRouter as Router, Navigate, Route, Routes } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 import { useTeamsUserCredential } from "@microsoft/teamsfx-react";
 import Privacy from "./Privacy";
 import TermsOfUse from "./TermsOfUse";
@@ -25,15 +30,16 @@ import {
  * of the app.
  */
 export default function App() {
-  const { loading, theme, themeString, teamsUserCredential } = useTeamsUserCredential({
-    initiateLoginEndpoint: config.initiateLoginEndpoint,
-    clientId: config.clientId,
-  });
-
   const [shareArticle, setShareArticle] = useState();
-
+  const { loading, theme, themeString, teamsUserCredential } =
+    useTeamsUserCredential({
+      initiateLoginEndpoint: config.initiateLoginEndpoint,
+      clientId: config.clientId,
+    });
   return (
-    <TeamsFxContext.Provider value={{ theme, themeString, teamsUserCredential }}>
+    <TeamsFxContext.Provider
+      value={{ theme, themeString, teamsUserCredential }}
+    >
       <FluentProvider
         theme={
           themeString === "dark"

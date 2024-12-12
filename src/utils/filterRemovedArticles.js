@@ -1,3 +1,5 @@
+//src/utils/filterRemovedArticles
+
 const filterRemovedArticles = (articles) => {
     return articles.filter((article) =>
         !(article.title && article.title.includes('[Removed]') &&
