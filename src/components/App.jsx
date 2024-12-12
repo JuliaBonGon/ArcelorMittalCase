@@ -22,7 +22,8 @@ import { TeamsFxContext } from "./Context";
 import config from "./sample/lib/config";
 import {
   ShareForm,
-  NotificationDummy
+  NotificationDummy,
+  NotificationPopup
 } from "./index";
 
 /**
@@ -64,6 +65,7 @@ export default function App() {
               <Route path="*" element={<Navigate to={"/tab"} />} />
               <Route path="/tab/share" element={<ShareForm article={shareArticle} />} />
               <Route path="/tab/notificationDummy" element={<NotificationDummy />} />
+              <Route path="/tab/notificationPopup" element={<NotificationPopup />} />
             </Routes>
           )}
         </Router>

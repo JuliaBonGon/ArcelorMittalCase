@@ -173,6 +173,15 @@ body {
   color: #666;
 }
 
+.shareLink {
+  height: max-content;
+  margin: auto 0 auto auto;
+}
+
+.shareLink>button {
+  /* → GIVE STYLING */
+}
+
 .small-box {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;

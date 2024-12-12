@@ -1,7 +1,8 @@
 //src/components/Tab.jsx
 import "./Tab.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 // import GeneralNews from "./GeneralNews";
 // import ArcelorMittalNews from "./ArcelorMittalNews";
@@ -11,15 +12,12 @@ import { formatDate } from "../utils/dateUtils";
 import deduplicateArticles from "../utils/deduplicateNews";
 import filterRemovedArticles from "../utils/filterRemovedArticles";
 
-const NewsDashboard = ({setShareArticle}) => {
+const NewsDashboard = ({ setShareArticle }) => {
+  const [fetchedNews, setFetchedNews] = useState([]);
   const [language, setLanguage] = useState('en');
   const [selectedNews, setSelectedNews] = useState('general');
-  const [dateRange, setDateRange] = useState ([null, null]);
+  const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
-
-  const mainNews = fetchedNews[0];
-  const rightNews = fetchedNews.slice(1, 4);
-  const bottomNews = fetchedNews.slice(4, 7);
 
   const noNewsFound =
     language === "en"
@@ -34,15 +32,19 @@ const NewsDashboard = ({setShareArticle}) => {
   const sortOptions =
     language === "en"
       ? [
-          { value: "relevancy", label: "Relevancy" },
-          { value: "popularity", label: "Popularity" },
-          { value: "publishedAt", label: "Newest first" },
-        ]
+        { value: "relevancy", label: "Relevancy" },
+        { value: "popularity", label: "Popularity" },
+        { value: "publishedAt", label: "Newest first" },
+      ]
       : [
-          { value: "relevancy", label: "Relevantie" },
-          { value: "popularity", label: "Populariteit" },
-          { value: "publishedAt", label: "Nieuwste eerst" },
-        ];
+        { value: "relevancy", label: "Relevantie" },
+        { value: "popularity", label: "Populariteit" },
+        { value: "publishedAt", label: "Nieuwste eerst" },
+      ];
+
+  const mainNews = fetchedNews[0];
+  const rightNews = fetchedNews.slice(1, 4);
+  const bottomNews = fetchedNews.slice(4, 7);
 
   const [sortBy, setSortBy] = useState("publishedAt");
 
@@ -57,8 +59,8 @@ const NewsDashboard = ({setShareArticle}) => {
           selectedNews === "arcelormittal"
             ? "arcelormittal"
             : language === "en"
-            ? "steel AND (industry OR manufacturing OR production)"
-            : "staal AND (industrie OR productie)";
+              ? "steel AND (industry OR manufacturing OR production)"
+              : "staal AND (industrie OR productie)";
 
         const response = await axios.get("https://newsapi.org/v2/everything", {
           params: {
@@ -82,6 +84,12 @@ const NewsDashboard = ({setShareArticle}) => {
 
     fetchNews();
   }, [language, sortBy, startDate, endDate, selectedNews]);
+
+
+  function shareLinkHandler(article) {
+    setShareArticle(article);
+  }
+
   return (
     <>
       <div className="news-dasboard">
@@ -102,9 +110,8 @@ const NewsDashboard = ({setShareArticle}) => {
             </button>
 
             <button
-              className={`icon ${
-                selectedNews === "arcelormittal" ? "active" : ""
-              }`}
+              className={`icon ${selectedNews === "arcelormittal" ? "active" : ""
+                }`}
               onClick={() => setSelectedNews("arcelormittal")}
             >
               ArcelorMittal News
@@ -147,10 +154,15 @@ const NewsDashboard = ({setShareArticle}) => {
                     <a href={mainNews.url} target="_blank" rel="noreferrer">
                       <h3>{mainNews.title}</h3>
                     </a>
-                    <p>
-                      {mainNews.source.name} •{" "}
-                      {formatDate(mainNews.publishedAt, language)}
-                    </p>
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                      <p>
+                        {mainNews.source.name} •{" "}
+                        {formatDate(mainNews.publishedAt, language)}
+                      </p>
+                      <Link class="shareLink" to="/tab/share">
+                        <button onClick={shareLinkHandler(mainNews)}>SHARE</button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               )}
@@ -164,12 +176,16 @@ const NewsDashboard = ({setShareArticle}) => {
                     <a href={article.url} target="_blank" rel="noreferrer">
                       <h3>{article.title}</h3>
                     </a>
-
-                    <p>
-                      {article.source.name} •{" "}
-                      {/* {new Date(article.publishedAt).toLocaleDateString()} */}
-                      {formatDate(article.publishedAt, language)}
-                    </p>
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                      <p>
+                        {article.source.name} •{" "}
+                        {/* {new Date(article.publishedAt).toLocaleDateString()} */}
+                        {formatDate(article.publishedAt, language)}
+                      </p>
+                      <Link class="shareLink" to="/tab/share">
+                        <button>SHARE</button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -183,10 +199,15 @@ const NewsDashboard = ({setShareArticle}) => {
                       <a href={article.url} target="_blank" rel="noreferrer">
                         <h3>{article.title}</h3>
                       </a>
-                      <p>
-                        {article.source.name} •{" "}
-                        {formatDate(article.publishedAt, language)}
-                      </p>
+                      <div style={{ display: "flex", flexDirection: "row" }}>
+                        <p>
+                          {article.source.name} •{" "}
+                          {formatDate(article.publishedAt, language)}
+                        </p>
+                        <Link class="shareLink" to="/tab/share">
+                          <button>SHARE</button>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 ))}

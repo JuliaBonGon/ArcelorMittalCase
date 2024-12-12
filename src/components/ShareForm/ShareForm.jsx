@@ -11,6 +11,7 @@ export default function ShareForm({ article }) {
     function shareSubmitHandler() {
         if (personInputRef.current.value === "MYSELF") {
             console.log("SHARE TO MYSELF");
+            navigate("/tab/notificationPopup");
         }
         else {
             navigate("/tab/notificationDummy");
@@ -37,6 +38,9 @@ export default function ShareForm({ article }) {
                         </select>
                     </div>
                     <button id="shareSubmit" onClick={shareSubmitHandler}>SHARE</button>
+                </div>
+                <div id="popupNoti">
+                    <img src="src\assets\img\notificationtemplate.png" alt="popupnoti"></img>
                 </div>
             </div>
         </>
