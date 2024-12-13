@@ -39,9 +39,6 @@ export default function ShareForm({ article }) {
                     </div>
                     <button id="shareSubmit" onClick={shareSubmitHandler}>SHARE</button>
                 </div>
-                <div id="popupNoti">
-                    <img src="src\assets\img\notificationtemplate.png" alt="popupnoti"></img>
-                </div>
             </div>
         </>
     );
