@@ -1,3 +1,6 @@
+GITHUB REPO:
+https://github.com/JuliaBonGon/ArcelorMittalCase/tree/DevBranch
+
 # Overview of the React with Fluent UI template
 
 This app showcases how to craft a visually appealing web page that can be embedded in Microsoft Teams, Outlook and the Microsoft 365 app with React and Fluent UI. The app also enhances the end-user experiences with built-in single sign-on and data from Microsoft Graph.
