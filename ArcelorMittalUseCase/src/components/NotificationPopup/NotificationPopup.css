@@ -1,0 +1,28 @@
+#main {
+    /* width: 100%; */
+    height: 800px;
+}
+
+#imgWrapper {
+    width: 80%;
+    height: auto;
+    margin: auto;
+}
+
+#imgWrapper>img {
+    max-width: 100%;
+}
+
+#main>button {
+    margin: 10px;
+    font-size: 32px;
+    padding: 5px;
+}
+
+#popup {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    scale: 0.5;
+    transform: translate(45%, 45%);
+}

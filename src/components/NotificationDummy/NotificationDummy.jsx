@@ -7,7 +7,7 @@ export default function NotificationDummy () {
     return (
         <>
             <div id="notificationDummyWrapper" style={{ display: "flex", flexDirection: "column" }}>
-                <Link to="/tab">
+                <Link to="/tab/share">
                     <button>GO BACK</button>
                 </Link>
                 <img id="notificationDummy" src={img} alt="oh no, the notification dummy img didn't load" />
